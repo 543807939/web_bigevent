@@ -31,7 +31,7 @@ $(function () {
         }
         $.ajax({
             type: 'POST',
-            url: baseURL + '/api/reguser',
+            url:  '/api/reguser',
             data: data,
             success: function (res) {
                 if (res.status !== 0) {
@@ -40,6 +40,32 @@ $(function () {
                 layer.msg(res.message)
                 $('#link_login').click()
             }
+        })
+    })
+
+    // 添加登录功能
+    $('#loginForm').on('submit', function (e) {
+        e.preventDefault()
+        // let data = {
+        //     username: $('#loginForm input[name="username"]').val(),
+        //     password: $('#loginForm input[name="password"]').val()
+        // }
+        let data = $(this).serialize()
+        console.log(data);
+        $.ajax({
+            type: 'POST',
+            url:  '/api/login',
+            data: data,
+            success: function (res) {
+                console.log(res);
+                if (res.status !== 0) {
+                    return layer.msg(res.message)
+                }
+                layer.msg(res.message)
+                localStorage.setItem('token',res.token)
+                location.href = '/index.html'
+            }
+            
         })
     })
 })
