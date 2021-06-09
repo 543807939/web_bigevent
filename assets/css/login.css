@@ -7,6 +7,9 @@ body {
   background: url("../images/login_bg.jpg") no-repeat center;
   background-size: cover;
 }
+.logo {
+  padding-top: 20px;
+}
 .loginAndRegBox {
   position: absolute;
   width: 400px;
