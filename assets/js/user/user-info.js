@@ -1,10 +1,24 @@
 $(function () {
     let form = layui.form
     form.verify({
-        username: [/^[\da-zA-Z]{1,15}$/, '用户名必须为1-15位,且是数字和字母组合'],
-        nickname:[/^\S{1,8}$/,'昵称应为1-8位非空字符'],
-        // 自定义名为pwd的校验规则
-        pwd: [/^\S{6,12}$/, '密码必须为6-12位,且是非空字符串'],
-        email:[/^[\da-zA-Z]{3,14}@[\da-zA-Z]{1,4}.[\da-zA-Z]{1,4}$/,'请输入正确的邮箱地址']
+        nickname: [/^\S{1,6}$/, '昵称应为1-6位非空字符'],
     })
+    initUserInfo()
 })
+
+// 初始化用户信息
+function initUserInfo() {
+    $.ajax({
+        type: 'GET',
+        url: '/my/userinfo',
+        success: function (res) {
+            console.log(res);
+            if (res.status !== 0) {
+                return
+            }
+            $('.layui-form input[name="username"]').val(res.data.username).attr('disabled')
+            $('.layui-form input[name="nickname"]').val(res.data.nickname)
+            $('.layui-form input[name="email"]').val(res.data.email)
+        }
+    })
+}

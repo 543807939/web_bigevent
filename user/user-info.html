@@ -15,7 +15,7 @@
     <div class="layui-card">
         <div class="layui-card-header">修改个人信息</div>
         <div class="layui-card-body">
-            <form class="layui-form" action="">
+            <form class="layui-form">
                 <div class="layui-form-item">
                     <label class="layui-form-label">登录名称</label>
                     <div class="layui-input-block">
@@ -26,15 +26,15 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户昵称</label>
                     <div class="layui-input-block">
-                        <input type="text" name="nickname" required lay-verify="required" placeholder="请输入用户昵称"
+                        <input type="text" name="nickname" required lay-verify="required|nickname" placeholder="请输入用户昵称"
                             autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户邮箱</label>
                     <div class="layui-input-block">
-                        <input type="text" name="email" required lay-verify="required" placeholder="请输入用户邮箱"
-                            autocomplete="off" class="layui-input">
+                        <input type="text" name="email" required lay-verify="required
+                        email" placeholder="请输入用户邮箱" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -50,6 +50,8 @@
     <script src="../assets/lib/layui/layui.all.js"></script>
     <!-- 导入jquery -->
     <script src="../assets/lib/jquery.js"></script>
+    <!-- 导入baseURL.js -->
+    <script src="../assets//js/baseURL.js"></script>
     <!-- 导入自己的js -->
     <script src="../assets/js/user/user-info.js"></script>
 </body>
