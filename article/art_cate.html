@@ -35,26 +35,57 @@
             </table>
         </div>
     </div>
+
+    <!-- 添加分类弹出层 -->
     <script type="text/html" id="dialog-add">
-        <form id="form-add" class="layui-form" >
+        <form id="form-add" class="layui-form">
             <div class="layui-form-item">
-              <label class="layui-form-label">分类名称</label>
-              <div class="layui-input-block">
-                <input type="text" name="name" required  lay-verify="required" placeholder="请输入分类名称" autocomplete="off" class="layui-input">
-              </div>
+                <label class="layui-form-label">分类名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入分类名称"
+                        autocomplete="off" class="layui-input">
+                </div>
             </div>
             <div class="layui-form-item">
-              <label class="layui-form-label">分类别名</label>
-              <div class="layui-input-block">
-                <input type="text" name="alias" required  lay-verify="required" placeholder="请输入分类别名" autocomplete="off" class="layui-input">
-              </div>
+                <label class="layui-form-label">分类别名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="alias" required lay-verify="required" placeholder="请输入分类别名"
+                        autocomplete="off" class="layui-input">
+                </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                  <button class="layui-btn" lay-submit lay-filter="formDemo">确认添加</button>
-                  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">确认添加</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
-              </div>
+            </div>
+        </form>
+    </script>
+
+    <!-- 编辑分类弹出层 -->
+    <script type="text/html" id="dialog-edit">
+        <form id="form-edit" lay-filter="form-edit" class="layui-form">
+            <input type="hidden" name="Id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入分类名称"
+                        autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类别名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="alias" required lay-verify="required" placeholder="请输入分类别名"
+                        autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">确认修改</button>
+
+                </div>
+            </div>
         </form>
     </script>
     <script src="../assets/lib/layui/layui.all.js"></script>
@@ -63,13 +94,14 @@
     <script src="../assets/lib/template-web.js"></script>
     <script src="../assets/js/article/art-cate.js"></script>
     <script type="text/html" id="data-tmp">
-       {{each data}}
-       <tr>
-        <td>{{$value.name}}</td>
-        <td>{{$value.alias}}</td>
-        <td><button type="button" class="layui-btn layui-btn-xs">编辑</button><button type="button" class="layui-btn layui-btn-warm layui-btn-xs">删除</button></td>
+        {{each data}}
+        <tr>
+            <td>{{$value.name}}</td>
+            <td>{{$value.alias}}</td>
+            <td><button type="button" class="btn-edit layui-btn layui-btn-xs" data-id="{{$value.Id}}">编辑</button><button
+                    type="button" data-id="{{$value.Id}}"  class="cata-del layui-btn layui-btn-warm layui-btn-xs">删除</button></td>
         </tr>
-       {{/each}}
+        {{/each}}
     </script>
 </body>
 
