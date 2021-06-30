@@ -113,7 +113,7 @@ $(function () {
             //do something
             $.ajax({
                 type: 'GET',
-                url: '/my/article/deletecate/' + id,
+                url: '/my/article/deleteArticle/' + id,
                 success: function (res) {
                     if (res.status !== 0) {
                         return layer.msg(res.message)
